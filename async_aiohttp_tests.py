@@ -26,11 +26,11 @@ async def run(r):
 def print_responses(result):
     print(result)
 
+def test_me_asynch():
+    start_time = time.time()
+    loop = asyncio.get_event_loop()
+    future = asyncio.ensure_future(run(100))
+    loop.run_until_complete(future)
 
-start_time = time.time()
-loop = asyncio.get_event_loop()
-future = asyncio.ensure_future(run(50))
-loop.run_until_complete(future)
-
-print("--- %s seconds ---" % (time.time() - start_time))
+    print("--- %s seconds ---" % (time.time() - start_time))
 
