@@ -26,6 +26,7 @@ async def run(r):
 def print_responses(result):
     print(result)
 
+
 start_time = time.time()
 loop = asyncio.get_event_loop()
 future = asyncio.ensure_future(run(50))
