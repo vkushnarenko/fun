@@ -5,7 +5,7 @@ from timeit import default_timer
 
 START_TIME = default_timer()
 
-def fetch(session, _):
+def fetch(session):
     base_url = "http://httpbin.org/uuid"
     with session.get(base_url) as response:
         data = response.text
