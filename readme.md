@@ -7,3 +7,5 @@ https://github.com/aio-libs/aiohttp
 http://httpbin.org/#/
 
 https://molotov.readthedocs.io/en/stable/
+
+https://medium.com/@cgarciae/making-an-infinite-number-of-requests-with-python-aiohttp-pypeln-3a552b97dc95
