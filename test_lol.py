@@ -58,6 +58,7 @@ async def run_tests_asynch(test_list):
     # Note: max_workers is set to 10 simply for this example,
     # you'll have to tweak with this number for your own projects
     # as you see fit
+    results =[]
     with ThreadPoolExecutor() as executor:
         with requests.Session() as session:
             # Set any session parameters here before calling `fetch`
@@ -79,16 +80,20 @@ async def run_tests_asynch(test_list):
 
             # Initializes the tasks to run and awaits their results
             for result in await asyncio.gather(*tasks):
-                pass
+                results.append(result)
+
+    return results
 
 def test_simple(session):
     call = SomeTrash(session)
     response = call.get_ololo()
     print(response.json())
     assert response.json()
+    return response
 
 @pytest.mark.parametrize("test_name, load_value", [(test_simple, 20)])
 def test_load_for(test_name, load_value):
     loop = asyncio.get_event_loop()
     future = asyncio.ensure_future(run_tests_asynch([test_name for _ in range(load_value)]))
     loop.run_until_complete(future)
+    print(future.result())
