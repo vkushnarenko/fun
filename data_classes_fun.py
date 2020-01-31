@@ -30,7 +30,7 @@ class ComplexMazafaka(DataClassJSONMixin):
 @dataclass
 class simpleMazafakaA():
     name: str
-    date: datetime
+    # date: datetime
     nick: str
     cash: Optional[int]
 
@@ -42,7 +42,8 @@ class ComplexMazafakaA():
     date: int
     another: str
     collect: List[simpleMazafakaA]
-    supa_simple: simpleMazafakaA = field(default=None)
+    supa_simple: Optional[simpleMazafakaA] = field(default=None)
+    supa_simple_2: simpleMazafakaA = field(default=None)
 
 
 
@@ -108,10 +109,8 @@ print(data_json.collect[2].cash)
 # works bad with str, cause parse there any shit, without type checking
 
 
-#
 #dacite can't recognize date time
 
 
-# data-class json gives runtime warning for PEP optional and default none
-# can work with date time automatically pushes them to from int via timestamp
+#data-class json gives runtime warning for PEP optional and default none
 
