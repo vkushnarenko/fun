@@ -7,7 +7,8 @@ from dataclasses import dataclass, field
 from typing import Optional, List
 import json
 
-@dataclass_json
+
+
 @dataclass
 class simpleMazafaka(DataClassJSONMixin):
     name: str
@@ -15,7 +16,7 @@ class simpleMazafaka(DataClassJSONMixin):
     nick: str
     cash: Optional[int]
 
-@dataclass_json
+
 @dataclass
 class ComplexMazafaka(DataClassJSONMixin):
     simple: simpleMazafaka
@@ -29,7 +30,7 @@ class ComplexMazafaka(DataClassJSONMixin):
 @dataclass
 class simpleMazafakaA():
     name: str
-    # date: datetime
+    date: datetime
     nick: str
     cash: Optional[int]
 
@@ -75,7 +76,7 @@ print(john)
 print(john.simple.name)
 print(john.supa_simple)
 print(john.collect[2].cash)
-
+#
 ken_json = json.dumps(json_to_convert)
 
 ken = ComplexMazafaka.from_json(ken_json)
@@ -107,7 +108,10 @@ print(data_json.collect[2].cash)
 # works bad with str, cause parse there any shit, without type checking
 
 
+#
 #dacite can't recognize date time
 
 
-#data-class json gives runtime warning.
+# data-class json gives runtime warning for PEP optional and default none
+# can work with date time automatically pushes them to from int via timestamp
+
